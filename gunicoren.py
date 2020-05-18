@@ -1,0 +1,9 @@
+debug = False
+bind = '0.0.0.0:8000'
+daemon = False
+worker_class = 'uvicorn.workers.UvicornWorker'
+accesslog = '-'
+errorlog = '-'
+workers = 1
+timeout = 3 * 60
+keepalive = 24 * 60 * 60
