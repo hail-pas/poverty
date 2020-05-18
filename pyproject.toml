@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "poverty"
+version = "0.1.0"
+description = "Dependencies of Poverty Project"
+authors = ["Phoenix <hypofiasco@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mysqlclient = "^1.4"
+django = "^2.2"
+django-debug-toolbar = "*"
+gevent = "*"
+gunicorn = "*"
+pycryptodome = "*"
+pyjwt = "*"
+redis = "*"
+django-redis = "*"
+requests = "*"
+twisted = {extras = ["http2", "tls"],version = "*"}
+djangorestframework = "*"
+django-cors-headers = "*"
+django-admin-sortable2 = "*"
+django_select2 = "*"
+coreapi = "*"
+django-suit = {git = "https://github.com/darklow/django-suit.git",branch="v2"}
+celery = "*"
+django-celery-email = "*"
+flower = {git = "https://github.com/mher/flower.git"}
+django-import-export = "*"
+sentry-sdk = "==0.13.5"
+django-admin-rangefilter = "*"
+xmltodict = "*"
+django-environ = "*"
+django-ratelimit = "^2.0"
+django-admin-honeypot = "^1.1"
+django-extensions = "^2.2"
+drf-yasg = {extras = ["validation"],version = "1.17"}
+BeautifulSoup4 = "^4.8"
+lxml = "^4.4"
+openpyxl="*"
+
+[tool.poetry.dev-dependencies]
+mysqlclient = "^1.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
