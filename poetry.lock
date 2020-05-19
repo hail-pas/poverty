@@ -12,7 +12,7 @@ asyncclick = "*"
 tortoise-orm = "branch develop"
 
 [package.source]
-reference = "ad9c3c809d429a922e59ee4aa773db73d22bcf25"
+reference = "b07d1abf49a9cf4db270811e5a7c5d8d57a3a5d0"
 type = "git"
 url = "https://github.com/long2ice/aerich.git"
 [[package]]
