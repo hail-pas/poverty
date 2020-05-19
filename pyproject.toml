@@ -27,7 +27,7 @@ httpx = "*"
 BeautifulSoup4 = "^4.8"
 lxml = "^4.4"
 openpyxl = "*"
-aerich = "*"
+aerich= {git = "https://github.com/long2ice/aerich.git"}
 jinja2 = "*"
 
 [tool.poetry.dev-dependencies]
