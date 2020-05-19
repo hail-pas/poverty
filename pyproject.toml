@@ -2,7 +2,7 @@
 name = "odyssey"
 version = "0.1.0"
 description = "Odyssey Dependencies"
-authors = ["panhongqi <phq@prismslight.com>"]
+authors = ["Phoenix <hypofiasco@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
