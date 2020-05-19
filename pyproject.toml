@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "odyssey"
+name = "poverty"
 version = "0.1.0"
-description = "Odyssey Dependencies"
+description = "Poverty Dependencies"
 authors = ["Phoenix <hypofiasco@gmail.com>"]
 
 [tool.poetry.dependencies]
