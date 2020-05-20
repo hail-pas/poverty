@@ -18,14 +18,6 @@ async def shutdown(ctx):
     await AsyncRedisUtil.close()
 
 
-class NotifyWorkerSettings:
-    on_startup = startup
-    on_shutdown = shutdown
-    queue_name = ArqQueue.notify.value
-    redis_settings = RedisSettings(**settings.ARQ)
-    functions = []
-
-
 class TaskWorkerSettings:
     redis_settings = RedisSettings(**settings.ARQ)
     functions = []
