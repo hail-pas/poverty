@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "poverty"
+name = "Poverty"
 version = "0.1.0"
 description = "Poverty Dependencies"
 authors = ["Phoenix <hypofiasco@gmail.com>"]

@@ -6,7 +6,7 @@ from apps.api.routes import api_router
 from apps.response import AesResponse
 
 app = FastAPI(
-    title='Odyssey API接口文档',
+    title='Poverty API接口文档',
     openapi_prefix='/api',
     debug=settings.DEBUG,
     default_response_class=AesResponse

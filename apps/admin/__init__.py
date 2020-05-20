@@ -5,7 +5,7 @@ from apps.admin.depends import sign_required
 from apps.admin.routes import api_router
 
 app = FastAPI(
-    title='一级客户运营后台API接口文档',
+    title='Poverty运营后台API接口文档',
     openapi_prefix='/admin',
     debug=settings.DEBUG,
 )
