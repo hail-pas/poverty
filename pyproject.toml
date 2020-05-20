@@ -29,6 +29,10 @@ lxml = "^4.4"
 openpyxl = "*"
 aerich= {git = "https://github.com/long2ice/aerich.git"}
 jinja2 = "*"
+aiofiles = "*"
+msgpack = "*"
+aiosmtplib = "*"
+xlsxwriter = "*"
 
 [tool.poetry.dev-dependencies]
 taskipy = "*"

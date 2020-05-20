@@ -1,5 +1,6 @@
 from tortoise import fields
 
+from db import enums
 from db.base import BaseModel
 
 
@@ -14,7 +15,28 @@ class App(BaseModel):
 class User(BaseModel):
     app = fields.ManyToManyField("models.App", related_name="users")
     token = fields.CharField(max_length=20, unique=True, description="认证token")
+    password = fields.CharField(max_length=200)
     name = fields.CharField(max_length=50, description="姓名")
     phone = fields.CharField(max_length=20, description="电话号码")
     email = fields.CharField(max_length=50, description="邮箱地址")
     balance = fields.DecimalField(max_digits=10, decimal_places=4, default=0, description="账户余额")
+
+
+class Config(BaseModel):
+    label = fields.CharField(max_length=200, description="标签")
+    key = fields.CharField(max_length=20, description="key")
+    value = fields.JSONField(description="value")
+    status: enums.GeneralStatus = fields.IntEnumField(enums.GeneralStatus, default=enums.GeneralStatus.on)
+
+
+class Admin(BaseModel):
+    username = fields.CharField(max_length=20, unique=True)
+    password = fields.CharField(max_length=200)
+    last_login = fields.DatetimeField(description='上次登录')
+    is_active = fields.BooleanField(default=True, description='是否激活')
+    is_superuser = fields.BooleanField(default=False, description='超级管理员')
+
+
+class Role(BaseModel):
+    label = fields.CharField(max_length=50)
+    admin = fields.ManyToManyField('models.Admin')

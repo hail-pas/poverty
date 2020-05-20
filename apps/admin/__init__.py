@@ -1,13 +1,52 @@
-from fastapi import FastAPI, Depends
-
 import settings
-from apps.admin.depends import sign_required
-from apps.admin.routes import api_router
+from . import routes
+from .paralib import Site, app, Menu
 
-app = FastAPI(
-    title='Poverty运营后台API接口文档',
-    openapi_prefix='/admin',
-    debug=settings.DEBUG,
+site = Site(
+    name='微服务管理后台',
+    logo=settings.SERVER_URL + '/static/images/logo.png',
+    locale='zh-CN',
+    locale_switcher=False,
+    menus=[
+        Menu(
+            name='首页',
+            url='/',
+            icon='fa fa-home'
+        ),
+        Menu(
+            name='配置',
+            title=True
+        ),
+        Menu(
+            name='应用',
+            url='/rest/App',
+            icon='fa fa-pencil',
+            search_fields=('uaid',)
+        ),
+        Menu(
+            name='在线参数',
+            url='/rest/Config',
+            icon='fa fa-cog',
+            search_fields=('key',)
+        ),
+        Menu(
+            name='授权',
+            title=True
+        ),
+        Menu(
+            name='用户',
+            url='/rest/User',
+            icon='fa fa-user'
+        ),
+        Menu(
+            name='角色',
+            url='/rest/Role',
+            icon='fa fa-group'
+        ),
+        Menu(
+            name='注销',
+            url='/logout',
+            icon='fa fa-lock'
+        )
+    ]
 )
-
-app.include_router(api_router, dependencies=[Depends(sign_required)])

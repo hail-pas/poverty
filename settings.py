@@ -5,6 +5,7 @@ import sys
 import sentry_sdk
 from dotenv import load_dotenv
 from sentry_sdk.integrations.redis import RedisIntegration
+from starlette.templating import Jinja2Templates
 
 load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,14 +16,34 @@ API_SECRET = os.getenv("API_SECRET")
 
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
 DB_PORT = os.getenv('DB_PORT', 3306)
-DB_USER = os.getenv('DB_USER', "root")
-DB_NAME = os.getenv('DB_NAME', "apps")
-DB_PASSWORD = os.getenv('DB_PASSWORD', "panhq112358")
-DB_CONFIG = dict(
-    host=DB_HOST,
-    port=DB_PORT,
-    user=DB_USER,
-    password=DB_PASSWORD)
+DB_USER = os.getenv('DB_USER')
+DB_NAME = os.getenv('DB_NAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+
+# Tortoise
+
+TORTOISE_ORM = {
+    'connections': {
+        'default': {
+            'engine': 'tortoise.backends.mysql',
+            'credentials': {
+                'host': DB_HOST,
+                'port': DB_PORT,
+                'user': DB_USER,
+                'password': DB_PASSWORD,
+                'database': DB_NAME,
+                'echo': os.getenv('DB_ECHO') == 'True',
+                'maxsize': 10,
+            }
+        },
+    },
+    'apps': {
+        'models': {
+            'models': ['db.models'],
+            'default_connection': 'default',
+        }
+    }
+}
 
 # redis
 REDIS_HOST = os.getenv('REDIS_HOST', '127.0.0.1')
@@ -57,3 +78,8 @@ sh.setFormatter(logging.Formatter(
     datefmt='%Y-%m-%d %H:%M:%S'
 ))
 LOGGER.addHandler(sh)
+
+# Templates
+templates = Jinja2Templates(directory="templates")
+
+SERVER_URL = os.getenv("SERVER_URL")

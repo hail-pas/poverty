@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from fastapi import Depends
 
-from apps.admin.routes import login
+from . import login, site, rest
+from ..paralib import app
+from ..paralib.depends import jwt_required
 
-api_router = APIRouter()
-
-api_router.include_router(login.router, tags=["登录"])
+app.include_router(login.router)
+app.include_router(site.router)
+app.include_router(rest.router, dependencies=[Depends(jwt_required)], prefix='/rest')
