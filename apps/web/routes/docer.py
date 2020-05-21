@@ -5,8 +5,6 @@ from starlette.background import BackgroundTasks
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from apps.web.common import send_html
-from paralib.utils import send_mail
 from settings import templates
 
 router = APIRouter()
@@ -17,7 +15,6 @@ router = APIRouter()
     description="文件上传"
 )
 async def upload_page(request: Request):
-    await send_mail(["hypofiasco@outlook.com", ], "text", "测试", email_type="html")
     return templates.TemplateResponse("web/upload_file.html", {"request": request})
 
 

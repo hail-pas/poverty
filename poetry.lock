@@ -12,7 +12,7 @@ pydantic = "*"
 tortoise-orm = "branch develop"
 
 [package.source]
-reference = "7018c23831307182c0a1bdc5a5eec0ba7ca2b241"
+reference = "23dd29644cda676da9cb657c36ce9e609472f320"
 type = "git"
 url = "https://github.com/long2ice/aerich.git"
 [[package]]
@@ -1093,10 +1093,9 @@ pypika = ">=0.36.5"
 typing-extensions = ">=3.7"
 
 [package.source]
-reference = "aliyun"
-type = "legacy"
-url = "https://mirrors.aliyun.com/pypi/simple"
-
+reference = "1e9663395fbe4778ffc593a1ccf36f4253c486a0"
+type = "git"
+url = "https://e.coding.net/prismslight/tortoise-orm.git"
 [[package]]
 category = "main"
 description = "Backported and Experimental Type Hints for Python 3.5+"
@@ -1198,7 +1197,7 @@ type = "legacy"
 url = "https://mirrors.aliyun.com/pypi/simple"
 
 [metadata]
-content-hash = "2a548aebfc292bb749292ca5f98dd624804422e9470b2160c43c7cd5d193cd71"
+content-hash = "d1ad2fde67e0a4bd4251667859d6f85f743b48d9db6643459f288f7dd9056726"
 python-versions = "^3.8"
 
 [metadata.hashes]
@@ -1274,7 +1273,7 @@ soupsieve = ["1634eea42ab371d3d346309b93df7870a88610f0725d47528be902a0d95ecc55",
 starlette = ["6169ee78ded501095d1dda7b141a1dc9f9934d37ad23196e180150ace2c6449b", "a9bb130fa7aa736eda8a814b6ceb85ccf7a209ed53843d0d61e246b380afa10f"]
 taskipy = ["5eb2c3b1606c896c7fa799848e71e8883b880759224958d07ba760e5db263175", "99bdaf5b19791c2345806847147e0fc2d28e1ac9446058def5a8b6b3fc9f23e2"]
 toml = ["926b612be1e5ce0634a2ca03470f95169cf16f939018233a670519cb4ac58b0f", "bda89d5935c2eac546d648028b9901107a595863cb36bae0c73ac804a9b4ce88"]
-tortoise-orm = ["08a25c59a171bdabe9469d1606f8c4ae41516504cc501f5d60c1b953f3e186bb"]
+tortoise-orm = []
 typing-extensions = ["6e95524d8a547a91e08f404ae485bbb71962de46967e1b71a0cb89af24e761c5", "79ee589a3caca649a9bfd2a8de4709837400dfa00b6cc81962a1e6a1815969ae", "f8d2bd89d25bc39dabe7d23df520442fa1d8969b82544370e03d88b5a591c392"]
 ujson = ["0c23f21e8d2b60efab57bc6ce9d1fb7c4e96f4bfefbf5a6043a3f3309e2a738a", "2ab88e330405315512afe9276f29a60e9b3439187b273665630a57ed7fe1d936", "3d1f4705a4ec1e48ff383a4d92299d8ec25e9a8158bcea619912440948117634", "6217c63a36e9b26e9271e686d212397ce7fb04c07d85509dd4e2ed73493320f8", "7ae13733d9467d16ccac2f38212cdee841b49ae927085c533425be9076b0bc9d", "bd2deffc983827510e5145fb66e4cc0f577480c62fe0b4882139f8f7d27ae9a3", "c8369ef49169804944e920c427e350182e33756422b69989c55608fc28bebf98"]
 urllib3 = ["3018294ebefce6572a474f0604c2021e33b3fd8006ecd11d62107a5d2a963527", "88206b0eb87e6d677d424843ac5209e3fb9d0190d0ee169599165ec25e9d9115"]

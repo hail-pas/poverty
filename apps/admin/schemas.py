@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 
 class LoginIn(BaseModel):
-    username: str = Body(..., example='long2ice')
+    username: str = Body(..., example='admin')
     password: str = Body(..., example='123456')
 
 

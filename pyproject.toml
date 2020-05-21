@@ -11,7 +11,7 @@ aiomysql = "^0.0.20"
 uvloop = "^0.14.0"
 gunicorn = "^20.0"
 fastapi = {version = "*", extras = ["all"]}
-tortoise-orm = "*"
+tortoise-orm = {git = "https://e.coding.net/prismslight/tortoise-orm.git"}
 sentry-sdk = "^0.14.3"
 ujson = "^2.0"
 passlib = "^1.7"

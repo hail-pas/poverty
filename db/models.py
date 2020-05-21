@@ -32,6 +32,8 @@ class Config(BaseModel):
 class Admin(BaseModel):
     username = fields.CharField(max_length=20, unique=True)
     password = fields.CharField(max_length=200)
+    mobile = fields.CharField(max_length=200, default="")
+    avatar = fields.CharField(max_length=200, default="")
     last_login = fields.DatetimeField(description='上次登录')
     is_active = fields.BooleanField(default=True, description='是否激活')
     is_superuser = fields.BooleanField(default=False, description='超级管理员')

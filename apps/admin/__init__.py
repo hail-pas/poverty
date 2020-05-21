@@ -3,7 +3,7 @@ from . import routes
 from .paralib import Site, app, Menu
 
 site = Site(
-    name='微服务管理后台',
+    name='管理后台',
     logo=settings.SERVER_URL + '/static/images/logo.png',
     locale='zh-CN',
     locale_switcher=False,
@@ -34,14 +34,23 @@ site = Site(
             title=True
         ),
         Menu(
-            name='用户',
-            url='/rest/User',
-            icon='fa fa-user'
+            name='管理员',
+            url='/rest/Admin',
+            icon='fa fa-adn'
         ),
         Menu(
             name='角色',
             url='/rest/Role',
             icon='fa fa-group'
+        ),
+        Menu(
+            name='管理',
+            title=True
+        ),
+        Menu(
+            name='用户',
+            url='/rest/User',
+            icon='fa fa-user'
         ),
         Menu(
             name='注销',
