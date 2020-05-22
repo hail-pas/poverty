@@ -19,16 +19,18 @@ async def send_mail(to_mails: Sequence[EmailStr], text: str, subject: str, email
     to_mails = to_mails
     text = text
     subject = subject
-    config = await get_config_by_key('email_config')
-    client = SMTP(hostname=config.get('mail_host'), port=config.get('mail_port'), username=config.get('mail_user'),
-                  password=config.get('mail_password'), use_tls=True)
+    # config = await get_config_by_key('email_config')
+    # client = SMTP(hostname=config.get('mail_host'), port=config.get('mail_port'), username=config.get('mail_user'),
+    #               password=config.get('mail_password'), use_tls=True)
+    client = SMTP(hostname="smtp.office365.com", port=587, username="povertool@outlook.com",
+                  password="backend4poverty", start_tls=True)
     if email_type == "html":
         message = MIMEText(text, 'html', 'utf-8')
     else:
         message = EmailMessage()
         message.set_content(text)
-    message['From'] = config.get('mail_send_from')
+    message['From'] = "povertool@outlook.com"
     message['Subject'] = subject
     async with client:
-        ret = await client.send_message(message, recipients=to_mails)
+        ret = await client.send_message(message, recipients=to_mails, )
     return ret

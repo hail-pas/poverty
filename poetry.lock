@@ -4,7 +4,7 @@ description = ""
 name = "aerich"
 optional = false
 python-versions = "^3.8"
-version = "0.1.1"
+version = "0.1.7"
 
 [package.dependencies]
 asyncclick = "*"
@@ -12,7 +12,7 @@ pydantic = "*"
 tortoise-orm = "branch develop"
 
 [package.source]
-reference = "23dd29644cda676da9cb657c36ce9e609472f320"
+reference = "4d0a6b4de611da801362be50fc897a22f701629b"
 type = "git"
 url = "https://github.com/long2ice/aerich.git"
 [[package]]

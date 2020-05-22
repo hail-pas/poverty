@@ -1,12 +1,10 @@
 import asyncio
-from asyncio.subprocess import Process
-
 from fastapi import APIRouter
 from starlette.background import BackgroundTasks
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from apps.web.common import xls2html_tool
+from apps.web.common import send_html
 from settings import templates
 
 router = APIRouter()
@@ -29,7 +27,7 @@ async def xls2html(request: Request, back_ground_tasks: BackgroundTasks):
     file = form_data.get("file").file
     if not file:
         return {"error": "未上传文件！！"}
-    loop = asyncio.get_running_loop()
-    loop.create_task(xls2html_tool(file._file))
-    # back_ground_tasks.add_task(send_html, file._file)
-    return JSONResponse(content={"status": "Success"})
+    # loop = asyncio.get_running_loop()
+    # loop.create_task(send_html(file._file))
+    back_ground_tasks.add_task(send_html, file._file)
+    return JSONResponse(content={"status": "Success"}, background=back_ground_tasks)

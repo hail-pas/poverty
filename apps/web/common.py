@@ -1,6 +1,8 @@
 import httpx
 from bs4 import BeautifulSoup
 from openpyxl import load_workbook
+from pydantic import EmailStr
+from datetime import datetime
 
 from paralib.utils import send_mail
 
@@ -239,10 +241,14 @@ async def xls2html_tool(file_name):
             tag, tag, tag)
     html_str = html_str + tag_str + """</div>
     <ul>""" + article_str + tail_str
-    with open("./output.html", mode="w+") as f:
-        f.write(html_str)
+    # with open("./output.html", mode="w+") as f:
+    #     f.write(html_str)
+    return html_str
 
 
 async def send_html(file):
-    text = xls2html_tool(file)
-    await send_mail(["hypofiasco@outlook.com", ], text, "测试", email_type="html")
+    print(datetime.timestamp(datetime.now()))
+    html = await xls2html_tool(file)
+    subject = f"{str(datetime.now().date())}行业动态"
+    await send_mail([EmailStr("hypofiasco@outlook.com"), ], html, subject, email_type="html")
+    print(datetime.timestamp(datetime.now()))
