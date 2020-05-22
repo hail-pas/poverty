@@ -247,8 +247,6 @@ async def xls2html_tool(file_name):
 
 
 async def send_html(file):
-    print(datetime.timestamp(datetime.now()))
     html = await xls2html_tool(file)
     subject = f"{str(datetime.now().date())}行业动态"
     await send_mail([EmailStr("hypofiasco@outlook.com"), ], html, subject, email_type="html")
-    print(datetime.timestamp(datetime.now()))

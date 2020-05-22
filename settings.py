@@ -10,6 +10,12 @@ from starlette.templating import Jinja2Templates
 load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_DSN"),
+    environment=os.getenv("environment", "development"),
+    integrations=[RedisIntegration()]
+)
+
 DEBUG = os.getenv('DEBUG') == 'True'
 ADMIN_SECRET = os.getenv("ADMIN_SECRET")
 API_SECRET = os.getenv("API_SECRET")
