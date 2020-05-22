@@ -1,11 +1,11 @@
-import requests
+import httpx
 from bs4 import BeautifulSoup
 from openpyxl import load_workbook
 
 from paralib.utils import send_mail
 
 
-def xls2html_tool(file_name):
+async def xls2html_tool(file_name):
     wb = load_workbook(file_name)
     ws = wb.active
     rows = ws.rows
@@ -208,27 +208,27 @@ def xls2html_tool(file_name):
             for first_tag_temp in first_tag.split(","):
                 if first_tag_temp not in tags:
                     tags.add(first_tag_temp)
-
-        ret = requests.get(link, allow_redirects=True)
-        soup = BeautifulSoup(ret.text, features="lxml")
-        news = soup.find(class_="newsDetail")
-        if not news:
-            continue
-        briefs = news.find_all_next(name="p")
-        brief_content = ""
-        for brief in briefs:
-            if len(brief.text) < 25 or "[声明]" in brief.text or "本文由新材料" in brief.text:
+        async with httpx.AsyncClient() as client:
+            ret = await client.get(link)
+            soup = BeautifulSoup(ret.text, features="lxml")
+            news = soup.find(class_="newsDetail")
+            if not news:
                 continue
-            else:
-                brief_content += brief.text
-                if len(brief_content) < 100:
+            briefs = news.find_all_next(name="p")
+            brief_content = ""
+            for brief in briefs:
+                if len(brief.text) < 25 or "[声明]" in brief.text or "本文由新材料" in brief.text:
                     continue
-                elif len(brief_content) >= 100:
-                    break
-        if not brief_content:
-            brief_content = title
-        if len(brief_content) > 260:
-            brief_content = brief_content[:260]
+                else:
+                    brief_content += brief.text
+                    if len(brief_content) < 100:
+                        continue
+                    elif len(brief_content) >= 100:
+                        break
+            if not brief_content:
+                brief_content = title
+            if len(brief_content) > 260:
+                brief_content = brief_content[:260]
 
         article_str += template_str.format(link, title, brief_content, add_time, first_tag, second_tag)
 
@@ -239,9 +239,8 @@ def xls2html_tool(file_name):
             tag, tag, tag)
     html_str = html_str + tag_str + """</div>
     <ul>""" + article_str + tail_str
-    return html_str
-    # with open(output_file, mode="w+") as f:
-    #     f.write(html_str)
+    with open("./output.html", mode="w+") as f:
+        f.write(html_str)
 
 
 async def send_html(file):
