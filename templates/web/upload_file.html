@@ -1,11 +1,19 @@
 {% extends "base.html" %}
-{% block head_add_info %}
+{% block title %}
+文件上传
 {% endblock %}
 {% block body %}
-    <form action="/web/doc/xls/2/html" method="post" enctype="multipart/form-data">
-        <label for="file">Filename:</label>
-        <input type="file" name="file" id="file"/>
-        <br/>
-        <input type="submit" name="submit" value="Submit"/>
-    </form>
+<div style="height:100%; width:100%; margin-top: 50px">
+    <div class="form-group" style="margin-left: 40%">
+        <form action="/web/doc/xls/2/html" method="post" enctype="multipart/form-data">
+            <label for="file">文件上传:</label><input style="display: inline; margin-left: 5px" type="file" name="file"
+                                                  id="file"
+                                                  class="file"/>
+            <button type="submit" class="btn btn-sm btn-primary"
+                    style="margin-left: 265px;margin-top: 5px;align-content: center; display: block">提交
+            </button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

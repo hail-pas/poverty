@@ -28,10 +28,10 @@ async def upload_page(request: Request):
 )
 async def xls2html(request: Request, back_ground_tasks: BackgroundTasks):
     form_data = await request.form()
-    file = form_data.get("file").file
-    if not file:
-        return {"error": "未上传文件！！"}
-    # loop = asyncio.get_running_loop()
-    # loop.create_task(send_html(file._file))
-    back_ground_tasks.add_task(send_html, file._file)
-    return JSONResponse(content={"status": "Success"}, background=back_ground_tasks)
+    file = form_data.get("file").file._file
+    if not file.getvalue():
+        return templates.TemplateResponse("web/failure.html",
+                                          {"request": request, "message": "没有文件上传！"})
+    back_ground_tasks.add_task(send_html, file)
+    return templates.TemplateResponse("web/success.html",
+                                      {"request": request, "email_address": "hypofiasco@outlook.com"})
