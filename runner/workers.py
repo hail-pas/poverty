@@ -3,7 +3,7 @@ from arq.connections import RedisSettings
 from tortoise import Tortoise
 
 import settings
-from apps.api.jobs import timing_monitor
+from apps.api.jobs import timing_monitor, monitor
 from apps.arq import ArqQueue
 from paralib.redis import AsyncRedisUtil
 from settings import TORTOISE_ORM
@@ -21,7 +21,7 @@ async def shutdown(ctx):
 
 class TaskWorkerSettings:
     redis_settings = RedisSettings(**settings.ARQ)
-    functions = []
+    functions = [monitor]
     on_startup = startup
     on_shutdown = shutdown
     queue_name = ArqQueue.task.value
