@@ -7,7 +7,7 @@ from apps.response import AesResponse
 
 app = FastAPI(
     title='Poverty API接口文档',
-    openapi_prefix='/api',
+    root_path='/api',
     debug=settings.DEBUG,
     default_response_class=AesResponse
 )
