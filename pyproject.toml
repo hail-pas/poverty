@@ -33,6 +33,8 @@ aiofiles = "*"
 msgpack = "*"
 aiosmtplib = "*"
 xlsxwriter = "*"
+qrcode = "*"
+image = "*"
 
 [tool.poetry.dev-dependencies]
 taskipy = "*"

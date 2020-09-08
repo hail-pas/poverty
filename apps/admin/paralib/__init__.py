@@ -233,6 +233,6 @@ class AdminApp(FastAPI):
 
 
 app = AdminApp(
-    openapi_prefix='/admin',
+    root_path='/admin',
 )
 app.add_exception_handler(HTTPException, exception_handler)
